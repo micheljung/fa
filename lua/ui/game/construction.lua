@@ -65,6 +65,9 @@ local upgradesTo = false
 local allowOthers = true
 
 function setIdRelations(idRelations_, upgradeKey_)
+    WARN('Construction.lua setIdRelations called from label init')
+    LOG(repr(idRelations_))
+    LOG(repr(upgradeKey_))
     idRelations = idRelations_
     upgradeKey = upgradeKey_
 end
@@ -1092,7 +1095,7 @@ function OnRolloverHandler(button, state)
         else
             UnitViewDetail.Hide()
         end
-    
+
 end
 
 function OnClickHandler(button, modifiers)
@@ -2575,6 +2578,7 @@ function MoveItemInQueue(queue, indexfrom, indexto)
     queue[indexto] = moveditem
     modifiedQueue = queue
     currentCommandQueue = queue
+
     -- Update buttons in the UI
     SetSecondaryDisplay('buildQueue')
 end
